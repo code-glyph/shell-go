@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
+	"os"
 )
 
 func main() {
-	fmt.Print("$ ")
+	_, _ = os.Stdout.WriteString("$ ")
 }
