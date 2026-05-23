@@ -24,6 +24,13 @@ func main() {
 			break
 		} else if(strings.HasPrefix(cmd, "echo ")) {
 			fmt.Println(cmd[len("echo "):])
+		} else if(strings.HasPrefix(cmd, "type ")) {
+			var builtIns = []string{"echo", "type", "exit"}
+			if(!strings.Contains(strings.Join(builtIns, " "), cmd[len("type "):])) {
+				fmt.Printf("%s: command not found\n", cmd[len("type "):])
+			} else {
+				fmt.Printf("%s is a shell built-in\n", cmd[len("type "):])
+			}
 		} else {
 			fmt.Printf("%s: command not found\n", cmd)
 		}
