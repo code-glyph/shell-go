@@ -29,7 +29,7 @@ func main() {
 			if(!strings.Contains(strings.Join(builtIns, " "), cmd[len("type "):])) {
 				fmt.Printf("%s: command not found\n", cmd[len("type "):])
 			} else {
-				fmt.Printf("%s is a shell built-in\n", cmd[len("type "):])
+				fmt.Printf("%s is a shell builtin\n", cmd[len("type "):])
 			}
 		} else {
 			fmt.Printf("%s: command not found\n", cmd)
