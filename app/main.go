@@ -18,6 +18,9 @@ func main() {
 			return
 		}
 		cmd = cmd[:len(cmd)-1] // Remove the newline character
+		if(cmd == "exit") {
+			break
+		}
 		fmt.Printf("%s: command not found\n", cmd)
 	}
 }
