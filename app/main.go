@@ -7,11 +7,11 @@ import (
 )
 
 func main() {
-	_, _ = os.Stdout.WriteString("$ ")
 	var cmd string
 	var err error
-	var reader := bufio.NewReader(os.Stdin)
+	reader := bufio.NewReader(os.Stdin)
 	for {
+		_, _ = os.Stdout.WriteString("$ ")
 		cmd, err = reader.ReadString('\n')
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Error reading command:", err)
