@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"bufio"
 	"strings"
+	"slices"
 )
 
 func main() {
@@ -26,7 +27,7 @@ func main() {
 			fmt.Println(cmd[len("echo "):])
 		} else if(strings.HasPrefix(cmd, "type ")) {
 			var builtIns = []string{"echo", "type", "exit"}
-			if(!strings.Contains(strings.Join(builtIns, " "), cmd[len("type "):])) {
+			if(!slices.Contains(builtIns, cmd[len("type "):])) {
 				fmt.Printf("%s: not found\n", cmd[len("type "):])
 			} else {
 				fmt.Printf("%s is a shell builtin\n", cmd[len("type "):])
