@@ -4,23 +4,29 @@ import (
 	"os"
 	"fmt"
 	"bufio"
+	"strings"
 )
 
 func main() {
 	var cmd string
 	var err error
-	reader := bufio.NewReader(os.Stdin)
+	reader := bufio.NewScanner(os.Stdin)
 	for {
 		_, _ = os.Stdout.WriteString("$ ")
-		cmd, err = reader.ReadString('\n')
+		reader.Scan()
+		cmd = reader.Text()
+		err = reader.Err()
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Error reading command:", err)
 			return
 		}
-		cmd = cmd[:len(cmd)-1] // Remove the newline character
 		if(cmd == "exit") {
 			break
 		}
-		fmt.Printf("%s: command not found\n", cmd)
+		if(strings.HasPrefix(cmd, "echo ")) {
+			fmt.Println(cmd[len("echo "):])
+		} else {
+			fmt.Printf("%s: command not found\n", cmd)
+		}
 	}
 }
